@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oli Molnar - Web Developer Portfolio">
+    <title>Oli Molnar | Web Developer</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Oli Molnar</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">Über Mich</a></li>
+                <li><a href="#portfolio" class="nav-link">Projekte</a></li>
+                <li><a href="#contact" class="nav-link">Kontakt</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Hallo! 👋 Ich bin Oli</h1>
+            <p class="hero-subtitle">Web Developer & Tech Enthusiast</p>
+            <p class="hero-description">
+                Ich baue moderne, responsive Websites mit HTML, CSS & JavaScript.
+                Aus Oberösterreich 🇦🇹
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('contact')">
+                    Lass uns reden
+                </button>
+                <a href="https://github.com/OliUser123" class="btn btn-secondary">
+                    GitHub anschauen
+                </a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">10+</div>
+                <p class="stat-label">Projekte</p>
+            </div>
+            <div class="stat">
+                <div class="stat-number">2+</div>
+                <p class="stat-label">Jahre Erfahrung</p>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <p class="stat-label">Hingabe</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <h2 class="section-title">Über Mich</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Wer bin ich?</h3>
+                    <p>
+                        Ich bin ein Web Developer aus Holzhausen, Oberösterreich.
+                        Meine Leidenschaft liegt in der Entwicklung moderner Websites
+                        und der Optimierung von User Experience.
+                    </p>
+                    <p>
+                        Ich arbeite mit HTML, CSS, JavaScript und modernen Frameworks.
+                        Mein Fokus liegt auf Clean Code, Performance und Responsiveness.
+                    </p>
+
+                    <h3>Skills</h3>
+                    <ul class="skills-list">
+                        <li>HTML5 & Semantik</li>
+                        <li>CSS3 & Responsive Design</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>Astro Framework</li>
+                        <li>Git & GitHub</li>
+                        <li>Linux & Docker</li>
+                        <li>Web Performance</li>
+                        <li>Figma & Design</li>
+                    </ul>
+                </div>
+                <div class="interests">
+                    <h3>Interessen</h3>
+                    <ul>
+                        <li>💻 Web Development</li>
+                        <li>🎮 Gaming</li>
+                        <li>🏋️ Fitness & Gym</li>
+                        <li>📊 Crypto & Blockchain</li>
+                        <li>🌍 Geopolitics</li>
+                        <li>🚀 Startups</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="portfolio-container">
+            <h2 class="section-title">Meine Projekte</h2>
+            <div class="portfolio-grid">
+                <article class="project-card">
+                    <div class="project-image">
+                        <span class="project-tag">Web Development</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Portfolio Website</h3>
+                        <p>Meine persönliche Portfolio Website mit modernem Design.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <a href="#" class="project-link">Projekt anschauen</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image">
+                        <span class="project-tag">Web App</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Todo List App</h3>
+                        <p>Interaktive Todo App mit Local Storage.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">DOM API</span>
+                            <span class="tech-tag">CSS</span>
+                        </div>
+                        <a href="#" class="project-link">Code anschauen</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image">
+                        <span class="project-tag">Design</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>UI Design System</h3>
+                        <p>Komprehensives Design System für Web Projekte.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">Design</span>
+                        </div>
+                        <a href="#" class="project-link">Ansehen</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Kontakt</h2>
+            <p class="contact-description">
+                Hast du eine Idee? Lass mich wissen!
+            </p>
+            <div class="contact-methods">
+                <a href="mailto:oli@olimolnar.com" class="contact-method">
+                    <span class="contact-icon">📧</span>
+                    <div>
+                        <p class="contact-label">Email</p>
+                        <p class="contact-value">oli@olimolnar.com</p>
+                    </div>
+                </a>
+                <a href="https://github.com/OliUser123" class="contact-method">
+                    <span class="contact-icon">💻</span>
+                    <div>
+                        <p class="contact-label">GitHub</p>
+                        <p class="contact-value">@OliUser123</p>
+                    </div>
+                </a>
+                <a href="#" class="contact-method">
+                    <span class="contact-icon">💼</span>
+                    <div>
+                        <p class="contact-label">LinkedIn</p>
+                        <p class="contact-value">Oli Molnar</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Oli Molnar. Alle Rechte vorbehalten.</p>
+            <p>Gebaut mit HTML, CSS & JavaScript ❤️</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
