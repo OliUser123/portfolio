@@ -281,3 +281,48 @@ body {
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary-blue); }
+
+/* Experience Timeline */
+.experience-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.experience-item {
+    padding: 2rem;
+    background-color: var(--surface-color);
+    border-left: 4px solid var(--primary-blue);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateX(10px);
+}
+
+.experience-item h3 {
+    color: var(--primary-blue);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.experience-item .date {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.experience-item p {
+    margin-bottom: 1rem;
+}
+
+.experience-item ul {
+    margin-left: 1.5rem;
+    margin-bottom: 0;
+}
+
+.experience-item li {
+    margin-bottom: 0.5rem;
+}
+
