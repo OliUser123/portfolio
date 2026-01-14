@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oli Molnar - Web Developer @ AWZ Immobilien">
     <title>Oli Molnar | Web Developer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#hero" class="logo">Oli Molnar</a>
@@ -21,11 +23,12 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero-content">
             <h1>👋 Hallo! Ich bin Oli</h1>
             <h2>Web Developer @ AWZ Immobilien</h2>
-            <p><strong>25.03.2005</strong> | Holzhausen, Oberösterreich</p>
+            <p><strong>25.03.2005</strong> | Holzhausen, Oberösterreich 🇦🇹</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">Kontakt</a>
                 <a href="assets/documents/Lebenslauf2025_Molnar.pdf" class="btn btn-secondary" download>Lebenslauf</a>
@@ -33,22 +36,111 @@
         </div>
     </section>
 
-    <!-- About, Skills, Projects... bleiben gleich wie vorher -->
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>Über mich</h2>
+        <div class="about-grid">
+            <div>
+                <p>Seit <strong>September 2025</strong> arbeite ich bei <strong>AWZ Immobilien</strong> (Berger GmbH) in der IT-Abteilung.</p>
+                
+                <h3 style="color: var(--primary-blue); margin-top: 2rem; margin-bottom: 1rem;">Meine Hauptaufgaben:</h3>
+                <ul>
+                    <li><strong>Webentwicklung</strong> für seniorenwelt.at (HTML, CSS, PHP, JavaScript)</li>
+                    <li><strong>IT-Support & Administration</strong> - Website-Fehlerbehebung, Anrufer-Support</li>
+                    <li><strong>Datenbank-Management</strong> mit PostgreSQL und pgAdmin4</li>
+                    <li><strong>Server-Administration</strong> über Terminal (Dateien hochladen, Scripts schreiben)</li>
+                    <li><strong>Content Management</strong> - Zeitungsartikel und Immobilien hochladen</li>
+                </ul>
 
+                <h3 style="color: var(--primary-blue); margin-top: 2rem; margin-bottom: 1rem;">Sprachen:</h3>
+                <ul>
+                    <li><strong>Muttersprache:</strong> Ungarisch 🇭🇺</li>
+                    <li><strong>Fließend:</strong> Deutsch & Englisch</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2>Skills & Tools</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>🌐 Web Development</h3>
+                <ul>
+                    <li>HTML5 & Semantik</li>
+                    <li>CSS3 & Responsive Design</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>PHP</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>🗄️ Database</h3>
+                <ul>
+                    <li>PostgreSQL</li>
+                    <li>pgAdmin4</li>
+                    <li>Datenbankdesign</li>
+                    <li>Query-Optimierung</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>🛠️ Tools & Systeme</h3>
+                <ul>
+                    <li>Linux (Fedora)</li>
+                    <li>Git & GitHub</li>
+                    <li>WebStorm IDE</li>
+                    <li>Terminal/Shell Scripting</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>🌍 Sprachen</h3>
+                <ul>
+                    <li>Ungarisch (Muttersprache)</li>
+                    <li>Deutsch (fließend)</li>
+                    <li>Englisch (fließend)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Projekte</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>💼 seniorenwelt.at</h3>
+                <p>AWZ Immobilien Webseite für Senioren - aktuell in Entwicklung. Verwende PHP, JavaScript, CSS und PostgreSQL für eine benutzerfreundliche Plattform.</p>
+                <span>HTML • CSS • PHP • JavaScript • PostgreSQL</span>
+            </div>
+            <div class="project-card">
+                <h3>🖥️ oli-goat.com</h3>
+                <p>Persönliches Webprojekt - <strong>eingestellt</strong> aufgrund von Zeitmangel, hohen Server-Kosten und neuen Projektideen bei der Arbeit.</p>
+                <span>Cloudflare • Netcup • Web Development</span>
+            </div>
+            <div class="project-card">
+                <h3>📱 Portfolio 2026</h3>
+                <p>Diese moderne Portfolio Website mit Dark/Light Mode, responsivem Design und blauem Theme.</p>
+                <span>HTML • CSS • JavaScript</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents Section -->
     <section id="documents" class="section">
-        <h2>Dokumente</h2>
+        <h2>Dokumente & Zeugnisse</h2>
         <div class="documents-grid">
             <a href="assets/documents/Lebenslauf2025_Molnar.pdf" class="doc-card" download>
                 <h3>📄 Lebenslauf</h3>
-                <p>Aktuelle Version 2026 (25.03.2005)</p>
+                <p>Aktuelle Version 2026</p>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">Geburtstag: 25.03.2005</p>
             </a>
             <a href="assets/documents/Jahreszeugnis2_Molnar.pdf" class="doc-card" download>
                 <h3>🏢 Jahreszeugnis 2. Klasse</h3>
-                <p>HTL - Positiv abgeschlossen</p>
+                <p>HTL - Positiv abgeschlossen ✓</p>
             </a>
             <a href="assets/documents/Jahreszeugnis3_Molnar.pdf" class="doc-card" download>
                 <h3>🏢 Jahreszeugnis 3. Klasse</h3>
-                <p>HTL - Positiv abgeschlossen</p>
+                <p>HTL - Positiv abgeschlossen ✓</p>
             </a>
             <a href="assets/documents/Jahreszeignis4_Molnar.pdf" class="doc-card" download>
                 <h3>📚 Jahreszeugnis 4. Klasse</h3>
@@ -57,7 +149,20 @@
         </div>
     </section>
 
-    <!-- Rest bleibt gleich -->
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Kontakt</h2>
+        <div class="contact-grid">
+            <div style="text-align: center;">
+                <p class="contact-text">Interessiert? Hier meine Kontaktdaten:</p>
+                <p><strong>📧 Email:</strong> <a href="mailto:your@email.com">your@email.com</a></p>
+                <p><strong>🔗 GitHub:</strong> <a href="https://github.com/OliUser123" target="_blank">OliUser123</a></p>
+                <p><strong>📍 Location:</strong> Holzhausen, Oberösterreich 🇦🇹</p>
+                <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.95rem;">Siehe Lebenslauf für weitere Kontaktdetails</p>
+            </div>
+        </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
