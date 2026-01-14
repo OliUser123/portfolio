@@ -3,282 +3,678 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Oliver Molnar - Applikationsentwicklung-Coding Lehrling @ AWZ Immobilien">
-    <title>Oliver Molnar | Applikationsentwicklung</title>
+    <meta name="description" content="Oliver Molnar - Web Developer & Applikationsentwicklung Lehrling">
+    <title>Oliver Molnar | Full Stack Developer</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#hero" class="logo">Oliver Molnar</a>
+            <a href="#hero" class="logo">
+                <span class="logo-bracket">&lt;</span>
+                Oliver
+                <span class="logo-bracket">/&gt;</span>
+            </a>
             <ul class="nav-menu">
-                <li><a href="#about">Über</a></li>
-                <li><a href="#education">Schulische Laufbahn</a></li>
-                <li><a href="#experience">Berufliche Laufbahn</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#journey">Journey</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projekte</a></li>
-                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="theme-toggle" id="themeToggle">🌙</button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero-content">
-            <h1>👋 Hallo! Ich bin Oliver</h1>
-            <h2>Applikationsentwicklung-Coding Lehrling @ AWZ Immobilien</h2>
-            <p><strong>25.03.2005</strong> | Oberösterreich 🇦🇹</p>
+            <div class="hero-greeting">
+                <h1 class="hero-title">
+                    Hey, I'm <span class="highlight">Oliver</span>
+                </h1>
+                <p class="hero-subtitle">
+                    20 y/o Full Stack Developer from Austria 🇦🇹
+                </p>
+            </div>
+            
+            <p class="hero-description">
+                I build beautiful, performant web applications and solve problems with code. Currently doing my apprenticeship in <strong>Application Development</strong> at <strong>AWZ Immobilien</strong> (2nd year).
+            </p>
+
+            <div class="tech-stack-hero">
+                <span class="stack-label">Tech Stack:</span>
+                <div class="stack-icons">
+                    <i class="fab fa-html5" title="HTML5"></i>
+                    <i class="fab fa-css3-alt" title="CSS3"></i>
+                    <i class="fab fa-js" title="JavaScript"></i>
+                    <i class="fab fa-react" title="React"></i>
+                    <i class="fab fa-php" title="PHP"></i>
+                    <i class="fab fa-docker" title="Docker"></i>
+                    <i class="fab fa-linux" title="Linux"></i>
+                    <i class="fab fa-git-alt" title="Git"></i>
+                </div>
+            </div>
+
             <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Kontakt</a>
-                <a href="https://github.com/OliUser123" class="btn btn-secondary" target="_blank">GitHub</a>
+                <a href="#projects" class="btn btn-primary">
+                    View My Work
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    Get in Touch
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
         </div>
-    </section>
 
-    <!-- About Section with Image -->
-    <section id="about" class="section">
-        <h2>Über mich</h2>
-        <div class="about-grid">
-            <div class="about-image">
-                <img src="assets/profile.jpg" alt="Oliver Molnar" class="profile-img">
-            </div>
-            <div class="about-text">
-                <p>Ich bin <strong>Oliver Molnar</strong>, 20 Jahre alt, und absolviere derzeit eine <strong>Lehre in Applikationsentwicklung-Coding bei AWZ Immobilien</strong> (Berger GmbH) - <strong>2. Lehrjahr</strong> (das 1. Lehrjahr konnte ich durch die HTL überspringen).</p>
-                
-                <h3 style="color: var(--primary-blue); margin-top: 2rem; margin-bottom: 1rem;">Meine Aufgaben in der Lehre:</h3>
-                <ul>
-                    <li><strong>Webentwicklung</strong> für seniorenwelt.at (HTML, CSS, PHP, JavaScript)</li>
-                    <li><strong>Email-Newsletter Management</strong> - Kundenrecherche via Mailing-Listen-Controller, Newsletter-Versand mit Scripts, Server-Verwaltung (Upload, Deployment), Unsubscribe-Management</li>
-                    <li><strong>IT-Support & Administration</strong> - Website-Fehlerbehebung und Wartung</li>
-                    <li><strong>Datenbank-Management</strong> mit PostgreSQL und pgAdmin4</li>
-                    <li><strong>Server-Administration</strong> über Terminal (Dateien hochladen, Scripts schreiben)</li>
-                    <li><strong>Content Management</strong> - Artikel und Immobilien-Management</li>
-                </ul>
-
-                <h3 style="color: var(--primary-blue); margin-top: 2rem; margin-bottom: 1rem;">Sprachen:</h3>
-                <ul>
-                    <li><strong>Ungarisch:</strong> Muttersprache 🇭🇺</li>
-                    <li><strong>Deutsch:</strong> C1 (2. Sprache)</li>
-                    <li><strong>Englisch:</strong> B2</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Timeline Section -->
-    <section id="education" class="section timeline-section">
-        <h2>Schulische Laufbahn</h2>
-        <div class="timeline-container">
-            <div class="timeline-item">
-                <div class="timeline-year-badge">
-                    <div class="year-box">2012-2014</div>
-                    <div class="timeline-dot"></div>
+        <div class="hero-visual">
+            <div class="profile-card">
+                <div class="profile-image-container">
+                    <div class="profile-placeholder">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        Available
+                    </div>
                 </div>
-                <div class="timeline-content">
-                    <h3>🇭🇺 Kaposvári Csokonai Vitéz Mihály Általános Iskola</h3>
-                    <p class="subtitle">1. Klasse + Anfang 2. Klasse</p>
-                    <p>Schulausbildung in Kaposvár, Ungarn. Kurz vor Ende der 2. Klasse umgezogen nach Österreich.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-year-badge">
-                    <div class="year-box">2014-2016</div>
-                    <div class="timeline-dot"></div>
-                </div>
-                <div class="timeline-content">
-                    <h3>🏫 Volkschule Mühldorf (Scharnstein)</h3>
-                    <p class="subtitle">Rest der 2. Klasse + 3. + 4. Klasse</p>
-                    <p>Abschluss der Volksschule in Mühldorf mit positivem Zeugnis.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-year-badge">
-                    <div class="year-box">2016-2020</div>
-                    <div class="timeline-dot"></div>
-                </div>
-                <div class="timeline-content">
-                    <h3>🏫 Neue Mittelschule Scharnstein</h3>
-                    <p class="subtitle">Sekundarstufe I</p>
-                    <p>Abschluss der NMS Scharnstein mit positivem Zeugnis.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item current">
-                <div class="timeline-year-badge">
-                    <div class="year-box">2020-2025</div>
-                    <div class="timeline-dot"></div>
-                </div>
-                <div class="timeline-content">
-                    <h3>🎓 HTBLA Wels</h3>
-                    <p class="subtitle">IT-Fachrichtung (abgebrochen)</p>
-                    <ul>
-                        <li>1. Klasse: Absolviert</li>
-                        <li>2. Klasse: Wiederholt</li>
-                        <li>3. Klasse: Absolviert</li>
-                        <li>4. Klasse: Nicht positiv abgeschlossen</li>
-                        <li style="margin-top: 0.8rem; font-weight: 600;">→ Schule abgebrochen, Start Lehre</li>
-                    </ul>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;"><em>Das 1. Lehrjahr konnte ich durch die HTL-Ausbildung überspringen.</em></p>
+                <div class="profile-info">
+                    <p class="profile-label">Born</p>
+                    <p class="profile-value">25.03.2005</p>
+                    <p class="profile-label">Location</p>
+                    <p class="profile-value">Holzhausen, OÖ</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Timeline Section -->
-    <section id="experience" class="section timeline-section">
-        <h2>Berufliche Laufbahn</h2>
-        <div class="timeline-container">
-            <div class="timeline-item">
-                <div class="timeline-year-badge">
-                    <div class="year-box">Aug 2022</div>
-                    <div class="timeline-dot"></div>
-                </div>
-                <div class="timeline-content">
-                    <h3>💻 IT-Praktikant @ Wolf System GmbH</h3>
-                    <p class="subtitle">01. August 2022 – 26. August 2022</p>
-                    <p>IT-Abteilung</p>
-                    <ul>
-                        <li>SQL und Datenbankarbeit</li>
-                        <li>PowerShell Scripting</li>
-                        <li>IT-Administration und Support</li>
-                    </ul>
-                </div>
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">A bit more about who I am</p>
             </div>
 
-            <div class="timeline-item current">
-                <div class="timeline-year-badge">
-                    <div class="year-box">ab 2025</div>
-                    <div class="timeline-dot"></div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Development</h3>
+                    <p>I love building things on the web. From frontend interfaces with React to backend systems with PHP and PostgreSQL, I enjoy the full stack journey.</p>
                 </div>
-                <div class="timeline-content">
-                    <h3>🏢 Applikationsentwicklung-Coding Lehrling @ AWZ Immobilien</h3>
-                    <p class="subtitle">Seit 1. September 2025 – Heute</p>
-                    <p><strong>2. Lehrjahr</strong> | IT-Abteilung bei Berger GmbH</p>
-                    <ul>
-                        <li>Webentwicklung für seniorenwelt.at</li>
-                        <li>Email-Newsletter Management und Versand</li>
-                        <li>PostgreSQL & pgAdmin4 Datenbank-Management</li>
-                        <li>Server-Administration und Terminal-Scripting</li>
-                        <li>IT-Support und Website-Maintenance</li>
-                        <li>Anwendungsentwicklung und Programmierung</li>
-                    </ul>
+
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>DevOps & Linux</h3>
+                    <p>Daily work with Linux terminals, Docker, SSH, Git, and server administration. I use Fedora as my main OS and love optimizing workflows.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Infrastructure</h3>
+                    <p>Experience with network configuration, VLAN setup, Cisco Packet Tracer, and database management with PostgreSQL and MSSQL.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Fitness & Health</h3>
+                    <p>Regular gym sessions at Anytime Fitness, focusing on strength training and posture optimization. I believe a healthy mind needs a healthy body.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fab fa-bitcoin"></i>
+                    </div>
+                    <h3>Crypto & Finance</h3>
+                    <p>Active in cryptocurrency investing and trading. I use Bitpanda and TradingView for portfolio management and market analysis.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Languages</h3>
+                    <p><strong>Hungarian</strong> (Native) | <strong>German</strong> (C1) | <strong>English</strong> (B2)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline Section -->
+    <section id="journey" class="section journey-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">My Journey</h2>
+                <p class="section-subtitle">Education & Professional Experience</p>
+            </div>
+
+            <div class="timeline">
+                <!-- Education -->
+                <div class="timeline-group">
+                    <h3 class="timeline-group-title">Education</h3>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2020 - 2025</div>
+                            <h4>HTBLA Wels - IT</h4>
+                            <p>Advanced Technical Vocational School with IT focus. Started my journey into serious tech education here. Completed 1st, 2nd, and 3rd year successfully, but decided to pursue an apprenticeship instead.</p>
+                            <div class="timeline-tags">
+                                <span>Java</span>
+                                <span>C#</span>
+                                <span>Networking</span>
+                                <span>Adobe Suite</span>
+                                <span>Databases</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2016 - 2020</div>
+                            <h4>NMS Scharnstein</h4>
+                            <p>Secondary school in Upper Austria. Completed with positive grades.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2014 - 2016</div>
+                            <h4>Volksschule Mühldorf</h4>
+                            <p>Primary school where I settled after moving from Hungary to Austria.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional -->
+                <div class="timeline-group">
+                    <h3 class="timeline-group-title">Professional</h3>
+
+                    <div class="timeline-item active">
+                        <div class="timeline-marker">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2024 - Present</div>
+                            <h4>Apprentice - Application Development</h4>
+                            <p><strong>AWZ Immobilien (Berger GmbH)</strong> | 2nd Year</p>
+                            <p>Working on real projects for seniorenwelt.at with daily responsibilities in:</p>
+                            <ul class="timeline-list">
+                                <li>Web development (HTML, CSS, PHP, JavaScript)</li>
+                                <li>Email newsletter management & deployment</li>
+                                <li>Database management (PostgreSQL, pgAdmin4)</li>
+                                <li>Server administration & maintenance</li>
+                                <li>Content management & technical support</li>
+                            </ul>
+                            <div class="timeline-tags">
+                                <span>PHP</span>
+                                <span>PostgreSQL</span>
+                                <span>HTML/CSS</span>
+                                <span>JavaScript</span>
+                                <span>Linux</span>
+                                <span>SSH</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">August 2022</div>
+                            <h4>IT Practicum</h4>
+                            <p><strong>Wolf System GmbH</strong></p>
+                            <p>4-week internship in the IT department working on SQL databases, PowerShell scripting, and IT administration.</p>
+                            <div class="timeline-tags">
+                                <span>SQL</span>
+                                <span>PowerShell</span>
+                                <span>IT Admin</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Development -->
+                <div class="timeline-group">
+                    <h3 class="timeline-group-title">Key Milestones</h3>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2024</div>
+                            <h4>Docker & Backend Mastery</h4>
+                            <p>Deep dive into Docker containerization, working on oli-goat.com project with MSSQL and advanced deployment strategies.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2023</div>
+                            <h4>PostgreSQL & Database Optimization</h4>
+                            <p>Intensive focus on relational databases, terminal commands (grep, scp, SSH), and daily server administration.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2022</div>
+                            <h4>Cross-Platform Development Start</h4>
+                            <p>Began working with Linux (Fedora, Linux Mint), exploring full stack development across different OS environments.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section">
-        <h2>Skills & Tools</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>🌐 Web Development</h3>
-                <ul>
-                    <li>HTML5 & Semantik</li>
-                    <li>CSS3 & Responsive Design</li>
-                    <li>JavaScript (ES6+)</li>
-                    <li>PHP</li>
-                    <li>Java & JavaFX (IntelliJ IDEA)</li>
-                    <li>Python (Anaconda Notebook, Diagramme)</li>
-                </ul>
+    <section id="skills" class="section skills-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">My Skills</h2>
+                <p class="section-subtitle">Technologies I work with</p>
             </div>
-            <div class="skill-card">
-                <h3>🗄️ Datenbanken</h3>
-                <ul>
-                    <li>PostgreSQL (täglich, intensiv)</li>
-                    <li>pgAdmin4</li>
-                    <li>MySQL</li>
-                    <li>MSSQL (grundlegend)</li>
-                    <li>Azure Datastudio</li>
-                    <li>Datenbankdesign & SQL</li>
-                </ul>
+
+            <!-- Frontend -->
+            <div class="skills-category">
+                <h3 class="category-title">
+                    <i class="fas fa-paint-brush"></i> Frontend
+                </h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-sass"></i>
+                        <span>SASS</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-react"></i>
+                        <span>React</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">TS</span>
+                        <span>TypeScript</span>
+                    </div>
+                </div>
             </div>
-            <div class="skill-card">
-                <h3>💻 Betriebssysteme & Systeme</h3>
-                <ul>
-                    <li>Linux (Fedora 43 Workstation, bevorzugt)</li>
-                    <li>Linux Mint</li>
-                    <li>Ubuntu (Schulung)</li>
-                    <li>Windows 10/11</li>
-                    <li>macOS (HTL)</li>
-                    <li>Windows Server (grundlegend)</li>
-                </ul>
+
+            <!-- Backend -->
+            <div class="skills-category">
+                <h3 class="category-title">
+                    <i class="fas fa-server"></i> Backend
+                </h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-php"></i>
+                        <span>PHP</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-python"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">SQ</span>
+                        <span>SQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">PG</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">MS</span>
+                        <span>MSSQL</span>
+                    </div>
+                </div>
             </div>
-            <div class="skill-card">
-                <h3>🛠️ Tools & Terminal</h3>
-                <ul>
-                    <li>Terminal/Bash (grundlegend, tägliche Nutzung)</li>
-                    <li>SSH & SCP (tägliche Nutzung)</li>
-                    <li>grep, Bash-Befehle</li>
-                    <li>WebStorm IDE</li>
-                    <li>VS Code</li>
-                    <li>IntelliJ IDEA</li>
-                    <li>Anaconda Notebook</li>
-                    <li>Putty</li>
-                </ul>
+
+            <!-- DevOps & Infrastructure -->
+            <div class="skills-category">
+                <h3 class="category-title">
+                    <i class="fas fa-network-wired"></i> DevOps & Infrastructure
+                </h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-linux"></i>
+                        <span>Linux</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-docker"></i>
+                        <span>Docker</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-terminal"></i>
+                        <span>Bash</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">SSH</span>
+                        <span>SSH/SCP</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">VL</span>
+                        <span>VLANs</span>
+                    </div>
+                </div>
             </div>
-            <div class="skill-card">
-                <h3>🌐 Netzwerk & Infrastruktur</h3>
-                <ul>
-                    <li>Cisco Packet Tracer</li>
-                    <li>Switch/Router Konfiguration</li>
-                    <li>VLANs</li>
-                    <li>Docker (oli-goat.com, MSSQL)</li>
-                    <li>Git & GitHub</li>
-                </ul>
+
+            <!-- Networking & Hardware -->
+            <div class="skills-category">
+                <h3 class="category-title">
+                    <i class="fas fa-microchip"></i> Networking & Hardware
+                </h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <span class="custom-icon">CS</span>
+                        <span>Cisco Packet Tracer</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">AR</span>
+                        <span>Arduino</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">SN</span>
+                        <span>Switch Config</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">RT</span>
+                        <span>Router Config</span>
+                    </div>
+                </div>
             </div>
-            <div class="skill-card">
-                <h3>🎨 Zusätzliche Skills</h3>
-                <ul>
-                    <li>Adobe Photoshop (HTL)</li>
-                    <li>Adobe Premiere Pro (HTL)</li>
-                    <li>Adobe Illustrator (HTL)</li>
-                    <li>Arduino Programmierung</li>
-                    <li>PowerShell Scripting</li>
-                    <li>Mailing-Listen Management</li>
-                    <li>Führerschein Klasse B</li>
-                </ul>
+
+            <!-- Design & Multimedia -->
+            <div class="skills-category">
+                <h3 class="category-title">
+                    <i class="fas fa-palette"></i> Design & Multimedia
+                </h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-adobe"></i>
+                        <span>Photoshop</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-adobe"></i>
+                        <span>Premiere Pro</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-adobe"></i>
+                        <span>Illustrator</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Platforms -->
+            <div class="skills-category">
+                <h3 class="category-title">
+                    <i class="fas fa-toolbox"></i> Tools & Platforms
+                </h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-windows"></i>
+                        <span>Windows</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-apple"></i>
+                        <span>macOS</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">VS</span>
+                        <span>VS Code</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">IJ</span>
+                        <span>IntelliJ IDEA</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">DB</span>
+                        <span>pgAdmin4</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="custom-icon">AZ</span>
+                        <span>Azure Data Studio</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Currently Learning -->
+            <div class="skills-category learning">
+                <h3 class="category-title">
+                    <i class="fas fa-graduation-cap"></i> Currently Learning
+                </h3>
+                <div class="skills-grid">
+                    <div class="skill-item learning-item">
+                        <span class="custom-icon">TS</span>
+                        <span>TypeScript (Advanced)</span>
+                    </div>
+                    <div class="skill-item learning-item">
+                        <i class="fab fa-react"></i>
+                        <span>React (Advanced)</span>
+                    </div>
+                    <div class="skill-item learning-item">
+                        <span class="custom-icon">SW</span>
+                        <span>Swift (iOS Dev)</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section">
-        <h2>Projekte</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>💼 seniorenwelt.at</h3>
-                <p>AWZ Immobilien Webseite für Senioren - aktuell in Entwicklung während meiner Lehre. Verwende PHP, JavaScript, CSS und PostgreSQL für eine benutzerfreundliche Plattform.</p>
-                <span>HTML • CSS • PHP • JavaScript • PostgreSQL</span>
+    <section id="projects" class="section projects-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Things I've built and worked on</p>
             </div>
-            <div class="project-card">
-                <h3>🖥️ oli-goat.com</h3>
-                <p>Persönliches Webprojekt - <strong>eingestellt</strong> aufgrund von Zeitmangel und neuen Projektideen bei der Arbeit. Verwendung von Docker für MSSQL Datenbank.</p>
-                <span>Cloudflare • Netcup • Docker • MSSQL • Web Development</span>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://seniorenwelt.at" target="_blank" class="project-link" title="Visit Website">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Seniorenwelt.at</h3>
+                        <p class="project-description">Full stack web application for senior citizens featuring content management, newsletters, and database integration.</p>
+                        <div class="project-tags">
+                            <span>PHP</span>
+                            <span>PostgreSQL</span>
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <p class="project-role"><strong>Role:</strong> Full Stack Developer (Current) - Daily maintenance, feature development, email newsletters</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://oli-goat.com" target="_blank" class="project-link" title="Visit Website">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>oli-goat.com</h3>
+                        <p class="project-description">Personal project showcasing modern web development practices with Docker containerization and MSSQL database.</p>
+                        <div class="project-tags">
+                            <span>Docker</span>
+                            <span>MSSQL</span>
+                            <span>React</span>
+                            <span>Node.js</span>
+                        </div>
+                        <p class="project-role"><strong>Role:</strong> Solo Developer - Architecture, development, deployment, DevOps</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#projects" class="project-link disabled" title="Internal Project">
+                                <i class="fas fa-lock"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Email Newsletter Management System</h3>
+                        <p class="project-description">Custom backend system for managing customer newsletters, unsubscribe lists, and automated mail deployments.</p>
+                        <div class="project-tags">
+                            <span>PHP</span>
+                            <span>Bash Scripting</span>
+                            <span>PostgreSQL</span>
+                            <span>Linux</span>
+                        </div>
+                        <p class="project-role"><strong>Role:</strong> Developer - System design, implementation, daily management</p>
+                    </div>
+                </div>
             </div>
-            <div class="project-card">
-                <h3>📱 Portfolio 2026</h3>
-                <p>Diese moderne Portfolio Website mit Dark/Light Mode, responsivem Design und blauem Theme zur Präsentation meiner Fähigkeiten und Erfahrung.</p>
-                <span>HTML • CSS • JavaScript</span>
+
+            <div class="projects-cta">
+                <p>Want to see more? Check out my GitHub for additional projects and code samples.</p>
+                <a href="https://github.com/OliUser123" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
-        <h2>Kontakt</h2>
-        <div class="contact-grid">
-            <div style="text-align: center;">
-                <p class="contact-text">Interessiert oder Fragen? Kontaktiere mich gerne:</p>
-                <p><strong>📧 Email:</strong> <a href="mailto:oliver.molnar2005@gmail.com">oliver.molnar2005@gmail.com</a></p>
-                <p><strong>🔗 GitHub:</strong> <a href="https://github.com/OliUser123" target="_blank">github.com/OliUser123</a></p>
+    <section id="contact" class="section contact-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Feel free to reach out to me</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:oliver@example.com">oliver@example.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/OliUser123" target="_blank">github.com/OliUser123</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <a href="https://linkedin.com/in/oliver-molnar" target="_blank">linkedin.com/in/oliver-molnar</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Holzhausen, Oberösterreich, Austria</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <p>&copy; 2025 Oliver Molnar. Designed & built with <i class="fas fa-heart"></i> using HTML, CSS & JavaScript.</p>
+            <div class="footer-links">
+                <a href="https://github.com/OliUser123" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/oliver-molnar" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
