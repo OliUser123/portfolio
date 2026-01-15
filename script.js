@@ -158,64 +158,272 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ==================== NAVBAR SCROLL EFFECT ==================== //
-    let lastScroll = 0;
-    const navbar = document.querySelector('.navbar');
+    // ==================== CONSOLIDATED SCROLL HANDLER (SMOOTH) ==================== //
+    /* Replaced immediate rAF-per-scroll approach with a single rAF-driven smoothing loop.
+       - targetScroll is written from the passive scroll listener (cheap)
+       - currentScroll is interpolated towards targetScroll in the RAF loop (smooth)
+       - NAV active link is handled via IntersectionObserver when available (low-cost)
+       - background bands opacity is gently updated to avoid jumps
+    */
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    const navbarEl = document.querySelector('.navbar');
+    const heroEl = document.querySelector('.hero');
+    const aboutEl = document.querySelector('.about-section');
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const navLinks = Array.from(document.querySelectorAll('.nav-menu a'));
 
-        if (navbar) {
-            if (currentScroll > 50) {
-                navbar.style.boxShadow = 'var(--shadow)';
-            } else {
-                navbar.style.boxShadow = 'none';
+    // small lerp helper
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    // initial values
+    let targetScroll = window.pageYOffset || document.documentElement.scrollTop;
+    let currentScroll = targetScroll;
+    let rafRunning = false;
+
+    // smoothing factor (1 = no smoothing). If user prefers reduced motion, avoid smoothing.
+    const defaultEase = 0.12;
+    const ease = (prefersReducedMotion ? 1 : defaultEase);
+
+    // NAVBAR handler (keeps DOM writes minimal)
+    const handleNavbar = (scrollY) => {
+        if (!navbarEl) return;
+        if (scrollY > 50) {
+            navbarEl.classList.add('scrolled');
+        } else {
+            navbarEl.classList.remove('scrolled');
+        }
+    };
+
+    // PARALLAX (GPU-accelerated transform). Uses smoothed scrollY.
+    const handleParallax = (scrollY) => {
+        if (!heroEl || prefersReducedMotion) return;
+        // subtle parallax, smoothed
+        const y = Math.round(scrollY * 0.45);
+        heroEl.style.transform = `translate3d(0, ${y}px, 0)`;
+    };
+
+    // ABOUT overlay calc (uses smoothed scroll values where appropriate)
+    const handleAboutStack = () => {
+        if (!aboutEl || !heroEl) return;
+        const navH = getNavHeight();
+        const heroRect = heroEl.getBoundingClientRect();
+        const aboutRect = aboutEl.getBoundingClientRect();
+
+        const heroHeight = Math.max(0, heroRect.height);
+        const visibleHero = Math.max(0, Math.min(heroHeight, heroRect.bottom - navH));
+        const scrolledOut = heroHeight - visibleHero;
+
+        const maxTranslate = Math.max(0, Math.min(scrolledOut, aboutRect.height || heroHeight));
+        const shouldOverlay = (aboutRect.top <= navH + 10) && (heroRect.bottom > navH + 10);
+
+        if (shouldOverlay) {
+            aboutEl.style.setProperty('--about-offset', `-${Math.round(maxTranslate)}px`);
+            aboutEl.classList.add('overlay');
+        } else {
+            aboutEl.classList.remove('overlay');
+            aboutEl.style.removeProperty('--about-offset');
+        }
+    };
+
+    // NAV active link: prefer IntersectionObserver for efficiency and accuracy
+    let navObserver = null;
+    const initNavObserver = () => {
+        if (prefersReducedMotion || !('IntersectionObserver' in window) || !sections.length) {
+            // fallback to last-known scanning approach
+            return;
+        }
+
+        const navH = getNavHeight();
+        navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.id;
+                const link = navLinks.find(l => l.getAttribute('href') === `#${id}`);
+                if (!link) return;
+
+                if (entry.isIntersecting && entry.intersectionRatio > 0.25) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                } else {
+                    // If the link is currently active but the section left view, remove it.
+                    if (link.classList.contains('active') && !entry.isIntersecting) {
+                        link.classList.remove('active');
+                    }
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: `-${navH + 120}px 0px -40% 0px`,
+            threshold: [0.25, 0.5]
+        });
+
+        sections.forEach(s => navObserver.observe(s));
+    };
+
+    initNavObserver();
+
+    // Fallback active-nav updater (runs rarely inside RAF)
+    const updateActiveNavFallback = () => {
+        if (!sections.length || !navLinks.length) return;
+        const navH = getNavHeight();
+        let currentId = '';
+        for (let i = 0; i < sections.length; i++) {
+            const s = sections[i];
+            const r = s.getBoundingClientRect();
+            if (r.top <= navH + 120 && r.bottom > navH + 120) {
+                currentId = s.id;
+                break;
             }
         }
 
-        lastScroll = currentScroll;
-    });
-
-    // ==================== ACTIVE NAVIGATION LINK ==================== //
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-menu a');
-
-    const updateActiveNav = () => {
-        let current = '';
-
-        const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            // const sectionHeight = section.clientHeight; // not used
-            if (scrollPos >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-
         navLinks.forEach(link => {
-            // reset styles
-            link.classList.remove('active');
-            if (link.getAttribute('href') && link.getAttribute('href').slice(1) === current) {
-                link.style.color = 'var(--primary-blue)';
+            const href = link.getAttribute('href') || '';
+            if (href.startsWith('#') && href.slice(1) === currentId) {
+                link.classList.add('active');
             } else {
-                link.style.color = 'var(--text-secondary)';
+                link.classList.remove('active');
             }
         });
     };
 
-    // update on load and on scroll
-    updateActiveNav();
-    window.addEventListener('scroll', updateActiveNav);
+    // BACKGROUND BANDS: gentle opacity updates based on section proximity
+    let bandElements = [];
+    const createBackgroundBands = () => {
+        if (prefersReducedMotion) return;
 
-    // ==================== PARALLAX EFFECT (Hero Section) ==================== //
-    const hero = document.querySelector('.hero');
-    if (hero && !prefersReducedMotion) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset || document.documentElement.scrollTop;
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        document.querySelectorAll('.bg-band').forEach(b => b.remove());
+        bandElements = [];
+
+        const allSections = Array.from(document.querySelectorAll('.section'));
+        allSections.forEach((sec, idx) => {
+            const band = document.createElement('div');
+            band.className = 'bg-band';
+            band.dataset.index = String(idx);
+
+            const secBg = getComputedStyle(sec).backgroundColor || getComputedStyle(document.documentElement).getPropertyValue('--bg-primary') || '#fff';
+            band.style.background = secBg;
+
+            const bandZ = (idx % 2 === 0) ? 10 : 20;
+            band.style.zIndex = String(bandZ);
+            band.style.opacity = '0';
+
+            sec.parentNode.insertBefore(band, sec);
+            bandElements.push({ band, sec });
         });
-    }
+    };
+    createBackgroundBands();
+
+    // update bands opacity smoothly based on section's top distance to nav line
+    const updateBands = (scrollY) => {
+        if (!bandElements.length) return;
+        const navH = getNavHeight();
+        const viewportCenter = (window.innerHeight) / 2;
+        bandElements.forEach(({ band, sec }) => {
+            const r = sec.getBoundingClientRect();
+            // distance from section top to viewport center (consider nav offset)
+            const dist = Math.abs((r.top + r.height / 2) - viewportCenter);
+            // map distance -> opacity (closer -> higher)
+            const max = window.innerHeight * 0.75;
+            let opacity = 1 - (dist / max);
+            opacity = Math.max(0, Math.min(1, opacity));
+            // soften transitions by applying a low-power lerp
+            const current = parseFloat(band.style.opacity || '0');
+            const next = lerp(current, opacity, 0.18);
+            band.style.opacity = String(next);
+            // small translate to reduce pop
+            const translate = Math.round((r.top - navH) * 0.03);
+            band.style.transform = `translate3d(0, ${translate}px, 0)`;
+        });
+    };
+
+    // RAF-driven smoothing loop: applies handlers using interpolated currentScroll
+    const rafLoop = () => {
+        rafRunning = true;
+        currentScroll = lerp(currentScroll, targetScroll, ease);
+        const scrollY = currentScroll;
+
+        handleNavbar(scrollY);
+        handleParallax(scrollY);
+        handleAboutStack();
+
+        // update nav active using observer fallback if observer not available
+        if (!navObserver) updateActiveNavFallback();
+
+        // background bands smoothing
+        updateBands(scrollY);
+
+        // stop when close enough to target to avoid infinite loop
+        if (Math.abs(targetScroll - currentScroll) > 0.5) {
+            requestAnimationFrame(rafLoop);
+        } else {
+            rafRunning = false;
+        }
+    };
+
+    // passive scroll listener writes only to targetScroll and triggers RAF
+    window.addEventListener('scroll', () => {
+        targetScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (!rafRunning) requestAnimationFrame(rafLoop);
+    }, { passive: true });
+
+    // init once
+    targetScroll = window.pageYOffset || document.documentElement.scrollTop;
+    currentScroll = targetScroll;
+    if (!rafRunning) requestAnimationFrame(rafLoop);
+
+    // update on resize (throttled via rAF)
+    let resizeRaf = null;
+    const onResize = () => {
+        if (resizeRaf) cancelAnimationFrame(resizeRaf);
+        resizeRaf = requestAnimationFrame(() => {
+            // rebuild bands because background or computed styles may change
+            createBackgroundBands();
+            handleAboutStack();
+            if (!navObserver) updateActiveNavFallback();
+        });
+    };
+    window.addEventListener('resize', onResize, { passive: true });
+
+    // ==================== BACKGROUND BANDS (SMOOTH ALTERNATING LAYERS) ==================== //
+    // create sticky background bands that alternate stacking order and match each section's background
+    const createBackgroundBandsLegacy = () => {
+        if (prefersReducedMotion) return;
+
+        // remove any existing bands (recreate on resize)
+        document.querySelectorAll('.bg-band').forEach(b => b.remove());
+
+        const allSections = Array.from(document.querySelectorAll('.section'));
+        allSections.forEach((sec, idx) => {
+            // create band and insert before section
+            const band = document.createElement('div');
+            band.className = 'bg-band';
+            band.dataset.index = String(idx);
+
+            // get computed background of section (falls back to CSS var)
+            const secBg = getComputedStyle(sec).backgroundColor || getComputedStyle(document.documentElement).getPropertyValue('--bg-primary') || '#fff';
+            band.style.background = secBg;
+
+            // alternate band stacking so bands overlay each other in an alternating pattern
+            // but keep bands below section content (sections have higher z-index via CSS)
+            const bandZ = (idx % 2 === 0) ? 10 : 20;
+            band.style.zIndex = String(bandZ);
+
+            // insert band right before the section so bands cover the area as the user scrolls
+            sec.parentNode.insertBefore(band, sec);
+        });
+    };
+
+    // create once and recreate on resize (throttled via rAF)
+    createBackgroundBandsLegacy();
+    let bandsRaf = null;
+    window.addEventListener('resize', () => {
+        if (bandsRaf) cancelAnimationFrame(bandsRaf);
+        bandsRaf = requestAnimationFrame(() => {
+            createBackgroundBandsLegacy();
+            // re-run about overlay calc because layout changed
+            handleAboutStack();
+            updateActiveNav();
+        });
+    }, { passive: true });
 
     console.log('✓ Portfolio loaded successfully!');
     console.log('🌙 Press the moon icon in the top-right to toggle dark mode');

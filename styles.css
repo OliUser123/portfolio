@@ -28,6 +28,8 @@
     --shadow-sm-dark: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-md-dark: 0 4px 6px rgba(0, 0, 0, 0.4);
     --shadow-lg-dark: 0 10px 15px rgba(0, 0, 0, 0.5);
+
+    --nav-height: 80px; /* fallback; kept in sync with .navbar height */
 }
 
 /* ==================== LIGHT MODE (DEFAULT) ==================== */
@@ -107,7 +109,7 @@ a:hover {
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
-    transition: var(--transition);
+    transition: background-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
 }
 
 body.dark-mode .navbar {
@@ -162,10 +164,19 @@ body.dark-mode .navbar {
     width: 0;
     height: 2px;
     background: var(--primary-blue);
-    transition: width 0.3s ease;
+    transition: width 260ms cubic-bezier(0.22,1,0.36,1), transform 260ms cubic-bezier(0.22,1,0.36,1);
+    transform-origin: left center;
 }
 
 .nav-menu a:hover::after {
+    width: 100%;
+}
+
+.nav-menu a.active {
+    color: var(--primary-blue);
+}
+
+.nav-menu a.active::after {
     width: 100%;
 }
 
@@ -198,6 +209,10 @@ body.dark-mode .navbar {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    position: relative; /* ensure stacking context */
+    z-index: 1;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .hero-content {
@@ -394,6 +409,8 @@ body.dark-mode .navbar {
 .section {
     padding: 4rem 2rem;
     background-color: var(--bg-primary);
+    position: relative; /* new: create stacking context so section content stays above bands */
+    z-index: 50;        /* section content above any .bg-band (bands use 10/20) */
 }
 
 .section-container {
@@ -420,6 +437,19 @@ body.dark-mode .navbar {
 /* ==================== ABOUT SECTION ==================== */
 .about-section {
     background-color: var(--bg-secondary);
+    position: relative;
+    z-index: 2;
+    transform: translate3d(0, var(--about-offset, 0px), 0);
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease, opacity 200ms ease;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.about-section.overlay {
+    z-index: 6; /* above hero (z-index 1) but below navbar (1000) */
+    box-shadow: 0 18px 36px rgba(2,6,23,0.28);
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .about-grid {
@@ -462,6 +492,10 @@ body.dark-mode .navbar {
 .timeline {
     max-width: 900px;
     margin: 0 auto;
+    /* make timeline a positioned container (used for consistent alignment) */
+    position: relative;
+    /* give room on the left for the marker + connector */
+    padding-left: 72px;
 }
 
 .timeline-group {
@@ -481,17 +515,17 @@ body.dark-mode .navbar {
     display: grid;
     grid-template-columns: 50px 1fr;
     gap: 2rem;
-    margin-bottom: 2.5rem;
+    /* move spacing from margin to padding so the left border connects continuously */
+    margin-bottom: 0; /* changed: remove outer margin that caused gaps in border */
     padding-left: 1rem;
+    padding-bottom: 2.5rem; /* increased so spacing between items is preserved visually */
     border-left: 2px solid var(--border-color);
     position: relative;
-    padding-bottom: 2rem;
+    /* ensure layout uses the same stacking as before */
+    /* ...other properties unchanged... */
 }
 
-.timeline-item.active {
-    border-left-color: var(--primary-blue);
-}
-
+/* center the circular marker on the timeline connector */
 .timeline-marker {
     width: 50px;
     height: 50px;
@@ -503,74 +537,56 @@ body.dark-mode .navbar {
     justify-content: center;
     font-size: 1.5rem;
     margin-top: 0.5rem;
-    position: relative;
-    left: -36px;
+    position: relative; /* keep marker positioned in-flow for predictable vertical alignment */
+    left: -28px; /* adjusted: center marker over the border/connector */
     box-shadow: var(--shadow-md);
 }
 
+/* keep active marker styling — unchanged except for alignment inherited above */
 .timeline-item.active .timeline-marker {
     background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
 }
 
-.timeline-content {
-    padding-top: 0.5rem;
-}
-
-.timeline-year {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--primary-blue);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.5rem;
-}
-
-.timeline-content h4 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-}
-
-.timeline-content p {
-    margin-bottom: 1rem;
-    line-height: 1.8;
-}
-
-.timeline-list {
-    list-style: none;
-    margin: 1rem 0;
-}
-
+/* ==================== LIST ARROW ADJUSTMENT ==================== */
+/* align the little arrow glyphs so they're visually centered relative to marker/connector */
 .timeline-list li {
-    padding-left: 1.5rem;
-    margin-bottom: 0.5rem;
+    padding-left: 1.6rem; /* give space for the custom bullet */
     position: relative;
-    color: var(--text-secondary);
 }
 
 .timeline-list li::before {
     content: '→';
     position: absolute;
-    left: 0;
+    left: 0.1rem; /* moved slightly right so it sits visually near the connector */
+    top: 0.08rem; /* small vertical nudge to better center with text */
     color: var(--primary-blue);
     font-weight: bold;
+    transform: translateX(0);
+    font-size: 0.95rem;
 }
 
-.timeline-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1rem;
-}
+/* Responsive: tighten offsets on small screens */
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 56px;
+    }
 
-.timeline-tags span {
-    background: var(--primary-blue);
-    color: white;
-    padding: 0.35rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
+    .timeline-marker {
+        left: -22px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .timeline-list li {
+        padding-left: 1.2rem;
+    }
+
+    .timeline-list li::before {
+        left: 0.05rem;
+        font-size: 0.9rem;
+    }
 }
 
 /* ==================== SKILLS SECTION ==================== */
@@ -954,10 +970,55 @@ body.dark-mode .navbar {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
-        left: -28px;
+        left: -22px;
     }
 
     .skills-grid {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
+}
+
+/* ensure sections sit above background bands */
+.section {
+    position: relative; /* new: create stacking context so section content stays above bands */
+    z-index: 50;        /* section content above any .bg-band (bands use 10/20) */
+}
+
+/* sticky, full-bleed background bands inserted by JS */
+.bg-band {
+    position: sticky;
+    top: calc(var(--nav-height)); /* sits under the navbar and covers viewport height while the section scrolls */
+    height: calc(100vh + var(--nav-height));
+    left: 0;
+    right: 0;
+    width: 100%;
+    pointer-events: none; /* don't intercept interactions */
+    will-change: transform, opacity;
+    transition: opacity 360ms cubic-bezier(0.22,1,0.36,1), transform 360ms cubic-bezier(0.22,1,0.36,1);
+    /* bands are visual only (color set by JS to match section background) */
+}
+
+/* keep hero performant when transformed by JS parallax */
+.hero {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* keep about overlay transform (driven by --about-offset) smooth */
+.about-section {
+    transform: translate3d(0, var(--about-offset, 0px), 0);
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease, opacity 200ms ease;
+}
+
+/* smoother navbar state when scrolled */
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+    transform: translateY(0);
+    transition: background-color 260ms cubic-bezier(0.22,1,0.36,1), box-shadow 260ms cubic-bezier(0.22,1,0.36,1);
+}
+
+body.dark-mode .navbar.scrolled {
+    background-color: rgba(15, 23, 42, 0.98);
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.18);
 }
