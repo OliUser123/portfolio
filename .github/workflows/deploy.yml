@@ -6,15 +6,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Deploy via SFTP
-        uses: appleboy/scp-action@v0.1.3
-        with:
-          host: ${{ secrets.IONOS_HOST }}
-          username: ${{ secrets.IONOS_USER }}
-          password: ${{ secrets.IONOS_PASS }}
-          port: 22
-          source: "./*"
-          target: "/portfolio/"
-          overwrite: true
+    - uses: actions/checkout@v4
+    
+    - name: Deploy via SFTP
+      uses: appleboy/scp-action@v0.1.3
+      with:
+        host: ${{ secrets.IONOS_HOST }}
+        username: ${{ secrets.IONOS_USER }}
+        password: ${{ secrets.IONOS_PASS }}
+        port: 22
+        source: "./*"
+        target: "/portfolio/"
+        strip_components: 0
+        timeout: 60s
+        command_timeout: 10m
+        overwrite: true
+        rm: true
