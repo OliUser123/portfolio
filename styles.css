@@ -275,6 +275,14 @@ body.dark-mode .navbar {
     transition: var(--transition-fast);
 }
 
+/* Ensure devicon icons in the hero stack match sizing & color */
+.stack-icons .devicon,
+.stack-icons .devicon:before {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    line-height: 1;
+}
+
 .stack-icons i:hover {
     transform: translateY(-5px);
     color: var(--accent-purple);
@@ -597,7 +605,8 @@ body.dark-mode .navbar {
 
 .skills-columns {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* changed: flexible columns so 3-4 categories adapt to viewport */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2.5rem;
     align-items: start;
     margin-bottom: 2.5rem;
@@ -641,6 +650,27 @@ body.dark-mode .navbar {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-primary);
+}
+
+/* Ensure devicon icons inside skill-item are sized and colored consistently */
+.skill-item .devicon, .skill-item .devicon:before {
+    font-size: 1.4rem; /* match other icons */
+    line-height: 1;
+    color: var(--primary-blue); /* use main accent color */
+}
+
+/* If devicon uses SVG fonts that include a 'colored' modifier, let it show but cap size */
+.skill-item .devicon.colored {
+    font-size: 1.4rem;
+}
+
+/* Provide slight spacing parity with other icons */
+.skill-item i.devicon,
+.skill-item i.fab,
+.skill-item i.fas,
+.skill-item .custom-icon {
+    display: inline-block;
+    margin-bottom: 0.25rem;
 }
 
 /* subtle hover for focused items */
