@@ -8,17 +8,19 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Deploy via SFTP
-      uses: appleboy/scp-action@v0.1.3
+    - name: Deploy via FTPS
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
       with:
-        host: ${{ secrets.IONOS_HOST }}
+        server: ${{ secrets.IONOS_HOST }}
         username: ${{ secrets.IONOS_USER }}
         password: ${{ secrets.IONOS_PASS }}
-        port: 22
-        source: "./*"
-        target: "/portfolio/"
-        strip_components: 0
-        timeout: 60s
-        command_timeout: 10m
-        overwrite: true
-        rm: false
+        protocol: ftps
+        port: 21
+        local-dir: './'
+        server-dir: '/portfolio/'
+        exclude: |
+          **/.git*
+          **/.github*
+          .gitignore
+          README.md
+          LICENSE
