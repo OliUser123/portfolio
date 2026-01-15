@@ -3,208 +3,551 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Oli Molnar - Web Developer Portfolio">
-    <title>Oli Molnar | Web Developer</title>
-    
-    <!-- CSS -->
+    <meta name="description" content="Oliver Molnar - Web Developer & Applikationsentwicklung Lehrling">
+    <title>Oliver Molnar | Full Stack Developer</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="assets/images/favicon.ico">
+    <!-- Font Awesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Devicon for developer / tech icons (Postgres, MySQL, TypeScript, Swift, etc.) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <!-- Google Fonts: Modak (display) + Inter (ui text) -->
+    <link href="https://fonts.googleapis.com/css2?family=Modak&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Oli Molnar</a>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#about" class="nav-link">Über Mich</a></li>
-                <li><a href="#portfolio" class="nav-link">Projekte</a></li>
-                <li><a href="#contact" class="nav-link">Kontakt</a></li>
+            <a href="#hero" class="logo">
+                <span class="logo-bracket">&lt;</span>
+                Oliver
+                <span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="theme-toggle" id="themeToggle">🌙</button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero-content">
-            <h1>Hallo! 👋 Ich bin Oli</h1>
-            <p class="hero-subtitle">Web Developer & Tech Enthusiast</p>
+            <div class="hero-greeting">
+                <h1 class="hero-title">
+                    Hey, I'm <span class="highlight">Oliver</span>
+                </h1>
+                <p class="hero-subtitle">
+                    20 y/o Full Stack Developer from Austria 🇦🇹
+                </p>
+            </div>
+            
             <p class="hero-description">
-                Ich baue moderne, responsive Websites mit HTML, CSS & JavaScript.
-                Aus Oberösterreich 🇦🇹
+                I build beautiful, performant web applications and solve problems with code. Currently doing my apprenticeship in <strong>Application Development</strong> at <strong>AWZ Immobilien</strong> (2nd year).
             </p>
+
+            <div class="tech-stack-hero">
+                <span class="stack-label">Tech Stack:</span>
+                <div class="stack-icons">
+                    <i class="devicon-html5-plain colored" title="HTML5"></i>
+                    <i class="devicon-css3-plain colored" title="CSS3"></i>
+                    <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                    <i class="devicon-react-original colored" title="React"></i>
+                    <i class="devicon-php-plain colored" title="PHP"></i>
+                    <i class="devicon-docker-plain colored" title="Docker"></i>
+                    <i class="devicon-linux-plain colored" title="Linux"></i>
+                    <i class="devicon-git-plain colored" title="Git"></i>
+                </div>
+            </div>
+
             <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="scrollToSection('contact')">
-                    Lass uns reden
-                </button>
-                <a href="https://github.com/OliUser123" class="btn btn-secondary">
-                    GitHub anschauen
+                <a href="#projects" class="btn btn-primary">
+                    View My Work
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    Get in Touch
+                    <i class="fas fa-envelope"></i>
                 </a>
             </div>
         </div>
-        <div class="hero-stats">
-            <div class="stat">
-                <div class="stat-number">10+</div>
-                <p class="stat-label">Projekte</p>
-            </div>
-            <div class="stat">
-                <div class="stat-number">2+</div>
-                <p class="stat-label">Jahre Erfahrung</p>
-            </div>
-            <div class="stat">
-                <div class="stat-number">100%</div>
-                <p class="stat-label">Hingabe</p>
+
+        <div class="hero-visual">
+            <div class="profile-card">
+                <div class="profile-image-container">
+                    <div class="profile-placeholder">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        Available
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <p class="profile-label">Born</p>
+                    <p class="profile-value">25.03.2005</p>
+                    <p class="profile-label">Location</p>
+                    <p class="profile-value">Wels, OÖ</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="about-container">
-            <h2 class="section-title">Über Mich</h2>
-            <div class="about-grid">
-                <div class="about-content">
-                    <h3>Wer bin ich?</h3>
-                    <p>
-                        Ich bin ein Web Developer aus Holzhausen, Oberösterreich.
-                        Meine Leidenschaft liegt in der Entwicklung moderner Websites
-                        und der Optimierung von User Experience.
-                    </p>
-                    <p>
-                        Ich arbeite mit HTML, CSS, JavaScript und modernen Frameworks.
-                        Mein Fokus liegt auf Clean Code, Performance und Responsiveness.
-                    </p>
+    <section id="about" class="section about-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">A bit more about who I am</p>
+            </div>
 
-                    <h3>Skills</h3>
-                    <ul class="skills-list">
-                        <li>HTML5 & Semantik</li>
-                        <li>CSS3 & Responsive Design</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>Astro Framework</li>
-                        <li>Git & GitHub</li>
-                        <li>Linux & Docker</li>
-                        <li>Web Performance</li>
-                        <li>Figma & Design</li>
-                    </ul>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Development</h3>
+                    <p>I love building things on the web. From frontend interfaces with React to backend systems with PHP and PostgreSQL, I enjoy the full stack journey.</p>
                 </div>
-                <div class="interests">
-                    <h3>Interessen</h3>
-                    <ul>
-                        <li>💻 Web Development</li>
-                        <li>🎮 Gaming</li>
-                        <li>🏋️ Fitness & Gym</li>
-                        <li>📊 Crypto & Blockchain</li>
-                        <li>🌍 Geopolitics</li>
-                        <li>🚀 Startups</li>
-                    </ul>
+
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>DevOps & Linux</h3>
+                    <p>Daily work with Linux terminals, Docker, SSH, Git, and server administration. I use Fedora as my main OS and love optimizing workflows.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Infrastructure</h3>
+                    <p>Experience with network configuration, VLAN setup, Cisco Packet Tracer, and database management with PostgreSQL and MSSQL.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Fitness & Health</h3>
+                    <p>Regular gym sessions at Anytime Fitness, focusing on strength training and posture optimization. I believe a healthy mind needs a healthy body.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fab fa-bitcoin"></i>
+                    </div>
+                    <h3>Crypto & Finance</h3>
+                    <p>Active in cryptocurrency investing and trading. I use Bitpanda and TradingView for portfolio management and market analysis.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Languages</h3>
+                    <p><strong>Hungarian</strong> (Native) | <strong>German</strong> (C1) | <strong>English</strong> (B2)</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="portfolio-container">
-            <h2 class="section-title">Meine Projekte</h2>
-            <div class="portfolio-grid">
-                <article class="project-card">
-                    <div class="project-image">
-                        <span class="project-tag">Web Development</span>
-                    </div>
-                    <div class="project-content">
-                        <h3>Portfolio Website</h3>
-                        <p>Meine persönliche Portfolio Website mit modernem Design.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <a href="#" class="project-link">Projekt anschauen</a>
-                    </div>
-                </article>
+    <!-- Journey Timeline Section -->
+    <section id="journey" class="section journey-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">My Journey</h2>
+                <p class="section-subtitle">Education & Professional Experience</p>
+            </div>
 
-                <article class="project-card">
-                    <div class="project-image">
-                        <span class="project-tag">Web App</span>
-                    </div>
-                    <div class="project-content">
-                        <h3>Todo List App</h3>
-                        <p>Interaktive Todo App mit Local Storage.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">DOM API</span>
-                            <span class="tech-tag">CSS</span>
-                        </div>
-                        <a href="#" class="project-link">Code anschauen</a>
-                    </div>
-                </article>
+            <div class="timeline">
+                <!-- Education -->
+                <div class="timeline-group">
+                    <h3 class="timeline-group-title">Education</h3>
 
-                <article class="project-card">
-                    <div class="project-image">
-                        <span class="project-tag">Design</span>
-                    </div>
-                    <div class="project-content">
-                        <h3>UI Design System</h3>
-                        <p>Komprehensives Design System für Web Projekte.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Figma</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">Design</span>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <a href="#" class="project-link">Ansehen</a>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2020 - 2025</div>
+                            <h4>HTBLA Wels - IT</h4>
+                            <p>Advanced Technical Vocational School with IT focus. Started my journey into serious tech education here. Completed 1st, 2nd, and 3rd year successfully, but decided to pursue an apprenticeship instead.</p>
+                            <div class="timeline-tags">
+                                <span>Java</span>
+                                <span>C#</span>
+                                <span>Networking</span>
+                                <span>Adobe Suite</span>
+                                <span>Databases</span>
+                            </div>
+                        </div>
                     </div>
-                </article>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2016 - 2020</div>
+                            <h4>NMS Scharnstein</h4>
+                            <p>Secondary school in Upper Austria. Completed with positive grades.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2014 - 2016</div>
+                            <h4>Volksschule Mühldorf</h4>
+                            <p>Primary school where I settled after moving from Hungary to Austria.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional -->
+                <div class="timeline-group">
+                    <h3 class="timeline-group-title">Professional</h3>
+
+                    <div class="timeline-item active">
+                        <div class="timeline-marker">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2024 - Present</div>
+                            <h4>Apprentice - Application Development</h4>
+                            <p><strong>AWZ Immobilien (Berger GmbH)</strong> | 2nd Year</p>
+                            <p>Working on real projects for seniorenwelt.at with daily responsibilities in:</p>
+                            <ul class="timeline-list">
+                                <li>Web development (HTML, CSS, PHP, JavaScript)</li>
+                                <li>Email newsletter management & deployment</li>
+                                <li>Database management (PostgreSQL, pgAdmin4)</li>
+                                <li>Server administration & maintenance</li>
+                                <li>Content management & technical support</li>
+                            </ul>
+                            <div class="timeline-tags">
+                                <span>PHP</span>
+                                <span>PostgreSQL</span>
+                                <span>HTML/CSS</span>
+                                <span>JavaScript</span>
+                                <span>Linux</span>
+                                <span>SSH</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">August 2022</div>
+                            <h4>IT Practicum</h4>
+                            <p><strong>Wolf System GmbH</strong></p>
+                            <p>4-week internship in the IT department working on MySQL databases, PowerShell scripting, and IT administration.</p>
+                            <div class="timeline-tags">
+                                <span>MySQL</span>
+                                <span>PowerShell</span>
+                                <span>IT Admin</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">My Skills</h2>
+                <p class="section-subtitle">Core technologies I work with</p>
+            </div>
+
+            <!-- Focused and structured skills: Frontend / Backend / DevOps / Learning -->
+            <div class="skills-columns">
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-paint-brush"></i> Frontend
+                    </h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="devicon-html5-plain colored" title="HTML5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-css3-plain colored" title="CSS3"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-server"></i> Backend
+                    </h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="devicon-php-plain colored" title="PHP"></i>
+                            <span>PHP</span>
+                        </div>
+                        <div class="skill-item">
+                            <!-- replaced custom text with Devicon PostgreSQL icon -->
+                            <i class="devicon-postgresql-plain colored" title="PostgreSQL"></i>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <!-- replaced custom text with Devicon MySQL icon -->
+                            <i class="devicon-mysql-plain colored" title="MySQL"></i>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-network-wired"></i> DevOps
+                    </h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="devicon-docker-plain colored" title="Docker"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-linux-plain colored" title="Linux"></i>
+                            <span>Linux</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-git-plain colored" title="Git"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-apple-original colored" title="macOS"></i>
+                            <span>macOS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-windows8-original colored" title="Windows"></i>
+                            <span>Windows</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-book-reader"></i> Currently Learning
+                    </h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <!-- replaced custom text with Devicon TypeScript icon -->
+                            <i class="devicon-typescript-plain colored" title="TypeScript"></i>
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-react-original colored" title="React"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-nodejs-plain colored" title="Node.js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-python-plain colored" title="Python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <!-- replaced custom text with Devicon Swift icon -->
+                            <i class="devicon-swift-plain colored" title="Swift"></i>
+                            <span>Swift</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Things I've built and worked on</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://seniorenwelt.at" target="_blank" class="project-link" title="Visit Website">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Seniorenwelt.at</h3>
+                        <p class="project-description">Full stack web application for senior citizens featuring content management, newsletters, and database integration.</p>
+                        <div class="project-tags">
+                            <span>PHP</span>
+                            <span>PostgreSQL</span>
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <p class="project-role"><strong>Role:</strong> Full Stack Developer (Current) - Daily maintenance, feature development, email newsletters</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://oli-goat.com" target="_blank" class="project-link" title="Visit Website">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>oli-goat.com</h3>
+                        <p class="project-description">Personal project showcasing modern web development practices with Docker containerization and MSSQL database.</p>
+                        <div class="project-tags">
+                            <span>Docker</span>
+                            <span>MSSQL</span>
+                            <span>React</span>
+                            <span>Node.js</span>
+                        </div>
+                        <p class="project-role"><strong>Role:</strong> Solo Developer - Architecture, development, deployment, DevOps</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#projects" class="project-link disabled" title="Internal Project">
+                                <i class="fas fa-lock"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Email Newsletter Management System</h3>
+                        <p class="project-description">Custom backend system for managing customer newsletters, unsubscribe lists, and automated mail deployments.</p>
+                        <div class="project-tags">
+                            <span>PHP</span>
+                            <span>Bash Scripting</span>
+                            <span>PostgreSQL</span>
+                            <span>Linux</span>
+                        </div>
+                        <p class="project-role"><strong>Role:</strong> Developer - System design, implementation, daily management</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-cta">
+                <p>Want to see more? Check out my GitHub for additional projects and code samples.</p>
+                <a href="https://github.com/OliUser123" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-container">
-            <h2 class="section-title">Kontakt</h2>
-            <p class="contact-description">
-                Hast du eine Idee? Lass mich wissen!
-            </p>
-            <div class="contact-methods">
-                <a href="mailto:oli@olimolnar.com" class="contact-method">
-                    <span class="contact-icon">📧</span>
-                    <div>
-                        <p class="contact-label">Email</p>
-                        <p class="contact-value">oli@olimolnar.com</p>
+    <section id="contact" class="section contact-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Feel free to reach out to me</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:oliver@example.com">oliver@example.com</a>
+                        </div>
                     </div>
-                </a>
-                <a href="https://github.com/OliUser123" class="contact-method">
-                    <span class="contact-icon">💻</span>
-                    <div>
-                        <p class="contact-label">GitHub</p>
-                        <p class="contact-value">@OliUser123</p>
+
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/OliUser123" target="_blank">github.com/OliUser123</a>
+                        </div>
                     </div>
-                </a>
-                <a href="#" class="contact-method">
-                    <span class="contact-icon">💼</span>
-                    <div>
-                        <p class="contact-label">LinkedIn</p>
-                        <p class="contact-value">Oli Molnar</p>
+
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <a href="https://linkedin.com/in/oliver-molnar" target="_blank">linkedin.com/in/oliver-molnar</a>
+                        </div>
                     </div>
-                </a>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Wels, Oberösterreich, Austria</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2026 Oli Molnar. Alle Rechte vorbehalten.</p>
-            <p>Gebaut mit HTML, CSS & JavaScript ❤️</p>
+        <div class="section-container">
+            <p>&copy; 2025 Oliver Molnar. Designed & built with <i class="fas fa-heart"></i> using HTML, CSS & JavaScript.</p>
+            <div class="footer-links">
+                <a href="https://github.com/OliUser123" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/oliver-molnar" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
