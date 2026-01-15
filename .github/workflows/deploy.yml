@@ -8,17 +8,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Deploy to IONOS
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+    - name: Deploy via SFTP to IONOS
+      uses: appleboy/scp-action@v1
       with:
-        server: ${{ secrets.IONOS_HOST }}
-        username: ${{ secrets.IONOS_USER }}
-        password: ${{ secrets.IONOS_PASS }}
-        local-dir: './'
-        server-dir: '/html/'
-        exclude: |
-          **/.git*
-          **/.github*
-          .gitignore
-          README.md
-          LICENSE
+        host: ${{ secrets.IONOS_HOST }}     # z.B. access123456.webspace-data.io
+        username: ${{ secrets.IONOS_USER }} # z.B. u123456
+        password: ${{ secrets.IONOS_PASS }} # SFTP-Passwort
+        port: 22
+        source: "./*"
+        target: "/portfolio/"
+        strip_components: 0
