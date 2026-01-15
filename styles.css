@@ -35,8 +35,8 @@
     --shadow-lg-dark: 0 16px 32px rgba(0, 0, 0, 0.5);
 
     --nav-height: 70px;
-    --font-display: 'Modak', cursive;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Tektur', sans-serif;
+    --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --radius-sm: 6px;
     --radius-md: 10px;
     --radius-lg: 14px;
@@ -89,21 +89,22 @@ body {
 /* ==================== TYPOGRAPHY ==================== */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: 0.8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     color: var(--text-primary);
 }
 
-h1 { font-size: 3.5rem; line-height: 1.1; }
-h2 { font-size: 2.2rem; line-height: 1.2; }
-h3 { font-size: 1.5rem; line-height: 1.3; }
-h4 { font-size: 1.25rem; }
-h5 { font-size: 1.1rem; }
-h6 { font-size: 1rem; }
+h1 { font-size: 3.2rem; line-height: 1.15; font-weight: 700; }
+h2 { font-size: 2rem; line-height: 1.25; font-weight: 700; }
+h3 { font-size: 1.4rem; line-height: 1.3; font-weight: 600; }
+h4 { font-size: 1.2rem; font-weight: 600; }
+h5 { font-size: 1rem; font-weight: 600; }
+h6 { font-size: 0.95rem; font-weight: 500; }
 
 p {
     color: var(--text-secondary);
     line-height: 1.7;
+    font-weight: 400;
 }
 
 a {
@@ -156,7 +157,7 @@ body.dark-mode .navbar {
 }
 
 .logo {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-primary);
     display: flex;
@@ -164,7 +165,7 @@ body.dark-mode .navbar {
     gap: 0.4rem;
     transition: var(--transition-fast);
     font-family: var(--font-display);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
 }
 
 .logo:hover {
@@ -185,7 +186,7 @@ body.dark-mode .navbar {
 .nav-menu a {
     color: var(--text-secondary);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     position: relative;
     transition: color 200ms ease;
 }
@@ -264,9 +265,10 @@ body.dark-mode .navbar {
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    line-height: 1.1;
+    font-size: 3.2rem;
+    line-height: 1.15;
     color: var(--text-primary);
+    font-weight: 700;
 }
 
 .hero-title .highlight {
@@ -277,7 +279,7 @@ body.dark-mode .navbar {
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--text-secondary);
     font-weight: 500;
 }
@@ -477,12 +479,13 @@ body.dark-mode .navbar {
 }
 
 .section-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin-bottom: 0.75rem;
     color: var(--text-primary);
     position: relative;
     display: inline-block;
     width: 100%;
+    font-weight: 700;
 }
 
 .section-title::after {
@@ -583,12 +586,13 @@ body.dark-mode .navbar {
 }
 
 .timeline-group-title {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     color: var(--primary-blue);
     margin-bottom: 2.5rem;
     display: flex;
     align-items: center;
     gap: 1rem;
+    font-weight: 700;
 }
 
 .timeline-item {
@@ -714,7 +718,7 @@ body.dark-mode .navbar {
 }
 
 .category-title {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: var(--primary-blue);
     margin-bottom: 1.5rem;
     display: flex;
