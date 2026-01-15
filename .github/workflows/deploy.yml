@@ -21,4 +21,4 @@ jobs:
         timeout: 60s
         command_timeout: 10m
         overwrite: true
-        rm: true
+        rm: false
