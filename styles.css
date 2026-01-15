@@ -494,8 +494,8 @@ body.dark-mode .navbar {
     margin: 0 auto;
     /* make timeline a positioned container (used for consistent alignment) */
     position: relative;
-    /* give room on the left for the marker + connector */
-    padding-left: 72px;
+    /* removed extra left padding used for the removed vertical connector */
+    padding-left: 0;
 }
 
 .timeline-group {
@@ -515,17 +515,18 @@ body.dark-mode .navbar {
     display: grid;
     grid-template-columns: 50px 1fr;
     gap: 2rem;
-    /* move spacing from margin to padding so the left border connects continuously */
-    margin-bottom: 0; /* changed: remove outer margin that caused gaps in border */
+    /* moved spacing from margin to padding so layout keeps spacing */
+    margin-bottom: 0;
     padding-left: 1rem;
-    padding-bottom: 2.5rem; /* increased so spacing between items is preserved visually */
-    border-left: 2px solid var(--border-color);
+    padding-bottom: 2.5rem;
+    /* removed border-left to delete the vertical line */
+    /* border-left: 2px solid var(--border-color); */ /* removed */
     position: relative;
     /* ensure layout uses the same stacking as before */
     /* ...other properties unchanged... */
 }
 
-/* center the circular marker on the timeline connector */
+/* center the circular marker in its grid column (no manual offset) */
 .timeline-marker {
     width: 50px;
     height: 50px;
@@ -537,8 +538,8 @@ body.dark-mode .navbar {
     justify-content: center;
     font-size: 1.5rem;
     margin-top: 0.5rem;
-    position: relative; /* keep marker positioned in-flow for predictable vertical alignment */
-    left: -28px; /* adjusted: center marker over the border/connector */
+    position: relative; /* keep marker in-flow */
+    left: 0; /* removed negative offset so it's centered in the first column */
     box-shadow: var(--shadow-md);
 }
 
@@ -569,11 +570,11 @@ body.dark-mode .navbar {
 /* Responsive: tighten offsets on small screens */
 @media (max-width: 768px) {
     .timeline {
-        padding-left: 56px;
+        padding-left: 0; /* removed connector padding for small screens too */
     }
 
     .timeline-marker {
-        left: -22px;
+        left: 0; /* ensure no negative offset on mobile */
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
@@ -594,53 +595,46 @@ body.dark-mode .navbar {
     background-color: var(--bg-secondary);
 }
 
+.skills-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+    margin-bottom: 2.5rem;
+}
+
 .skills-category {
-    margin-bottom: 3.5rem;
-}
-
-.category-title {
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.category-title i {
-    color: var(--primary-blue);
+    background: transparent;
+    padding: 0;
+    margin-bottom: 0;
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
 }
 
+/* tighter, consistent skill items */
 .skill-item {
     background: var(--bg-primary);
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.9rem;
     text-align: center;
-    transition: var(--transition);
+    transition: var(--transition-fast);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
     cursor: default;
+    font-size: 0.95rem;
 }
 
-.skill-item:hover {
-    border-color: var(--primary-blue);
-    background: var(--bg-secondary);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-}
-
-.skill-item i {
-    font-size: 2rem;
-    color: var(--primary-blue);
+.skill-item i,
+.skill-item .custom-icon {
+    font-size: 1.4rem;
 }
 
 .skill-item span {
@@ -649,32 +643,31 @@ body.dark-mode .navbar {
     color: var(--text-primary);
 }
 
-.custom-icon {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-purple) 100%);
-    color: white;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin: 0;
+/* subtle hover for focused items */
+.skill-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-blue);
 }
 
-.learning {
-    border: 2px dashed var(--accent-purple);
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+/* Responsive: stack categories on narrow screens */
+@media (max-width: 980px) {
+    .skills-columns {
+        grid-template-columns: 1fr;
+    }
 }
 
-.learning-item {
-    border-color: var(--accent-purple);
-}
+/* reduce gaps on very small screens */
+@media (max-width: 420px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
 
-.learning-item:hover {
-    border-color: var(--accent-cyan);
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+    .skill-item {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
 }
 
 /* ==================== PROJECTS SECTION ==================== */
@@ -970,11 +963,15 @@ body.dark-mode .navbar {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
-        left: -22px;
+        left: 0;
     }
 
     .skills-grid {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .skills-columns {
+        grid-template-columns: 1fr;
     }
 }
 
